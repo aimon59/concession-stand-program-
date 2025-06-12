@@ -1,0 +1,58 @@
+from colorama import init,Fore,Style
+init(autoreset=True)
+
+cart=[]
+total=0
+
+menus = {
+    "Popcorn": 3.50,
+    "Soda": 2.00,
+    "Candy": 1.50,
+    "Nachos": 4.00,
+    "Hot Dog": 3.00,
+    "Burger": 5.00,
+    "French Fries": 2.50,
+    "Ice Cream": 2.75,
+    "Pizza Slice": 3.25,
+    "Chicken Nuggets": 4.50,
+    "Water Bottle": 1.00,
+    "Milkshake": 3.75,
+    "Pretzel": 2.25,
+    "Corn Dog": 2.80,
+    "Chocolate Bar": 1.25,
+    "Cupcake": 1.75,
+    "Cheese Sticks": 3.00,
+    "Slushier": 2.50,
+    "Energy Drink": 2.75,
+    "Coffee": 2.00
+}
+
+print(Fore.RED +  "--------------------MENU--------------------")
+
+for item,price in menus.items():
+    print(Fore.MAGENTA + f"{item:15} : ${price}")
+
+print(Fore.RED + "--------------------------------------------")
+
+
+while True:  
+   choice=input(Fore.GREEN + "Enter item to order (or 'done' to finish): ").title()
+
+   if choice=="Done":
+      break 
+   elif choice in menus:
+      cart.append(choice)
+   else:
+      print(Fore.LIGHTRED_EX + "Sorry, that item is not on the menu.")  
+
+
+print(Fore.LIGHTYELLOW_EX + "\n-----------Receipt-----------")
+     
+for item in cart:
+   price=menus[item]
+   print(Fore.LIGHTYELLOW_EX + f"{item:15}: ${price}")
+   total +=price
+
+
+print(Fore.LIGHTCYAN_EX + f"Total amount: ${total}")
+print(Fore.LIGHTRED_EX + "Thank you for your order!")
